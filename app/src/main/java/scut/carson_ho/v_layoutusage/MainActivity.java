@@ -548,8 +548,8 @@ public class MainActivity extends AppCompatActivity implements MyItemClickListen
         /**
          *步骤6:设置分割线 & Item之间的间隔
          **/
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, layoutManager.getOrientation()));
-        // 需要自定义类DividerItemDecoration
+//        recyclerView.addItemDecoration(new DividerItemDecoration(this, layoutManager.getOrientation()));
+//        // 需要自定义类DividerItemDecoration
         recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
                 outRect.set(5, 5, 5, 5);
