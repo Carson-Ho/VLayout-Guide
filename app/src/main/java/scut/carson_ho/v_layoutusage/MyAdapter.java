@@ -22,17 +22,18 @@ public class MyAdapter extends DelegateAdapter.Adapter<MyAdapter.MainViewHolder>
     // 使用DelegateAdapter首先就是要自定义一个它的内部类Adapter，让LayoutHelper和需要绑定的数据传进去
     // 此处的Adapter和普通RecyclerView定义的Adapter只相差了一个onCreateLayoutHelper()方法，其他的都是一样的做法.
 
-    private LayoutInflater inflater;
     private ArrayList<HashMap<String, Object>> listItem;
-    private MyItemClickListener myItemClickListener;
-
+    // 用于存放数据列表
 
     private Context context;
     private LayoutHelper layoutHelper;
     private RecyclerView.LayoutParams layoutParams;
     private int count = 0;
 
-    //构造函数
+    private MyItemClickListener myItemClickListener;
+    // 用于设置Item点击事件
+
+    //构造函数(传入每个的数据列表 & 展示的Item数量)
     public MyAdapter(Context context, LayoutHelper layoutHelper, int count, ArrayList<HashMap<String, Object>> listItem) {
         this(context, layoutHelper, count, new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 300), listItem);
     }
@@ -61,6 +62,7 @@ public class MyAdapter extends DelegateAdapter.Adapter<MyAdapter.MainViewHolder>
     }
 
 
+    // 绑定Item的数据
     @Override
     public void onBindViewHolder(MainViewHolder holder, int position) {
         holder.Text.setText((String) listItem.get(position).get("ItemTitle"));
@@ -69,25 +71,17 @@ public class MyAdapter extends DelegateAdapter.Adapter<MyAdapter.MainViewHolder>
 
     }
 
-
+    // 返回Item数目
     @Override
     public int getItemCount() {
         return count;
-    }//返回Item数目
+    }
 
-
+    // 设置Item的点击事件
+    // 绑定MainActivity传进来的点击监听器
     public void setOnItemClickListener(MyItemClickListener listener) {
         myItemClickListener = listener;
-    }//绑定MainActivity传进来的点击监听器
-
-
-//    static class MainViewHolder extends RecyclerView.ViewHolder {
-//        public TextView tv1;
-//        public MainViewHolder(View itemView) {
-//            super(itemView);
-//            tv1 = (TextView) itemView.findViewById(R.id.item_tv1);
-//        }
-//    }
+    }
 
 
     //定义Viewholder
@@ -97,6 +91,8 @@ public class MyAdapter extends DelegateAdapter.Adapter<MyAdapter.MainViewHolder>
 
         public MainViewHolder(View root) {
             super(root);
+
+            // 绑定视图
             Text = (TextView) root.findViewById(R.id.Item);
             image = (ImageView) root.findViewById(R.id.Image);
 
@@ -107,7 +103,8 @@ public class MyAdapter extends DelegateAdapter.Adapter<MyAdapter.MainViewHolder>
                         myItemClickListener.onItemClick(v, getPosition());
                 }
 
-            }//监听到点击就回调MainActivity的onItemClick函数
+            }
+            //监听到点击就回调MainActivity的onItemClick函数
             );
 
         }
