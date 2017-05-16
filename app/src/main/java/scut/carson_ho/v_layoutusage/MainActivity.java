@@ -1,7 +1,6 @@
 package scut.carson_ho.v_layoutusage;
 
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -535,6 +534,8 @@ public class MainActivity extends AppCompatActivity implements MyItemClickListen
         adapters.add(Adapter_onePlusNLayout) ;
         adapters.add(Adapter_StaggeredGridLayout) ;
 
+
+        //
         // 3. 创建DelegateAdapter对象 & 将layoutManager绑定到DelegateAdapter
         DelegateAdapter delegateAdapter = new DelegateAdapter(layoutManager);
 
@@ -545,16 +546,16 @@ public class MainActivity extends AppCompatActivity implements MyItemClickListen
         recyclerView.setAdapter(delegateAdapter);
 
 
-        /**
-         *步骤6:设置分割线 & Item之间的间隔
-         **/
-//        recyclerView.addItemDecoration(new DividerItemDecoration(this, layoutManager.getOrientation()));
-//        // 需要自定义类DividerItemDecoration
-        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
-            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-                outRect.set(5, 5, 5, 5);
-            }
-        });
+//        /**
+//         *步骤6:设置分割线 & Item之间的间隔
+//         **/
+////        recyclerView.addItemDecoration(new DividerItemDecoration(this, layoutManager.getOrientation()));
+////        // 需要自定义类DividerItemDecoration
+//        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+//            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+//                outRect.set(5, 5, 5, 5);
+//            }
+//        });
 
 
     }
